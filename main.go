@@ -16,21 +16,9 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
+	client, err := newClient()
 	if err != nil {
 		log.Println(err)
-	}
-
-	in := &gotwi.NewClientInput{
-		AuthenticationMethod: gotwi.AuthenMethodOAuth1UserContext,
-		OAuthToken:           os.Getenv("accessToken"),
-		OAuthTokenSecret:     os.Getenv("accessTokenSecret"),
-	}
-
-	c, err := gotwi.NewClient(in)
-	if err != nil {
-		fmt.Println(err)
-		return
 	}
 
 	// p := &types.CreateInput{
@@ -67,7 +55,7 @@ func main() {
 		},
 	}
 
-	u, err := userlookup.GetByUsername(context.Background(), c, p)
+	u, err := userlookup.GetByUsername(context.Background(), client, p)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -81,5 +69,26 @@ func main() {
 		for _, t := range u.Includes.Tweets {
 			fmt.Println("PinnedTweet: ", gotwi.StringValue(t.Text))
 		}
+	}
+}
+
+func newClient() (*gotwi.Client, error) {
+	// Load the environment variables first
+	loadEnv()
+
+	// Login
+	in := &gotwi.NewClientInput{
+		AuthenticationMethod: gotwi.AuthenMethodOAuth1UserContext,
+		OAuthToken:           os.Getenv("accessToken"),
+		OAuthTokenSecret:     os.Getenv("accessTokenSecret"),
+	}
+
+	return gotwi.NewClient(in)
+}
+
+func loadEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println(err)
 	}
 }
