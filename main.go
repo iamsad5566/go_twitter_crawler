@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	"twitter-crawler/post"
+	"twitter-crawler/getusr"
 
 	"github.com/joho/godotenv"
 	"github.com/michimani/gotwi"
@@ -15,7 +15,7 @@ func main() {
 		log.Println(err)
 	}
 
-	post.Tweet(client)
+	getusr.GetUserInfo(client, "elonmusk")
 }
 
 func newClient() (*gotwi.Client, error) {
