@@ -15,6 +15,7 @@ func main() {
 		log.Println(err)
 	}
 
+	// input userName
 	getusr.GetUserInfo(client, "elonmusk")
 }
 
