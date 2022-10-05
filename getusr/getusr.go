@@ -63,7 +63,7 @@ func GetUserInfo(client *gotwi.Client, userName string) {
 
 func getTweets(client *gotwi.Client, twiusr *twitterUser) {
 	p := &sttypes.ListRecentInput{
-		MaxResults:  10,
+		MaxResults:  100,
 		Query:       "from:" + twiusr.UserName + " -is:retweet -is:reply",
 		TweetFields: fields.TweetFieldList{fields.TweetFieldCreatedAt},
 	}

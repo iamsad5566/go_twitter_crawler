@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	"twitter-crawler/getusr"
+	"twirobot/getusr"
 
 	"github.com/joho/godotenv"
 	"github.com/michimani/gotwi"
@@ -16,7 +16,9 @@ func main() {
 	}
 
 	// input userName
-	getusr.GetUserInfo(client, "elonmusk")
+	getusr.GetUserInfo(client, "MINAMI373HAMABE")
+
+	// search.SearchStream(client)
 }
 
 func newClient() (*gotwi.Client, error) {
