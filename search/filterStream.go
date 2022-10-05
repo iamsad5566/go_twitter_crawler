@@ -12,7 +12,7 @@ import (
 func SearchStream(client *gotwi.Client) {
 	p := &types.CreateRulesInput{
 		Add: []types.AddingRule{
-			{Value: gotwi.String("Elon mask"), Tag: gotwi.String("mask")},
+			{Value: gotwi.String("Twitter API v2"), Tag: gotwi.String("example rule")},
 		},
 	}
 
@@ -20,7 +20,9 @@ func SearchStream(client *gotwi.Client) {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	for _, r := range res.Data {
-		fmt.Printf("ID: %s, Value: %s, Tag: %s\n", gotwi.StringValue(r.ID), gotwi.StringValue(r.Value), gotwi.StringValue(r.Tag))
-	}
+	fmt.Println(res)
+
+	// for _, r := range res.Data {
+	// 	fmt.Printf("ID: %s, Value: %s, Tag: %s\n", gotwi.StringValue(r.ID), gotwi.StringValue(r.Value), gotwi.StringValue(r.Tag))
+	// }
 }
