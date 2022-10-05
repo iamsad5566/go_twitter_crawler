@@ -1,4 +1,4 @@
-module twirobot
+module github.com/iamsad5566/twirobot
 
 go 1.18
 

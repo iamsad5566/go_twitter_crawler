@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"os"
-	"twirobot/getusr"
 
+	"github.com/iamsad5566/twirobot/getusr"
 	"github.com/joho/godotenv"
 	"github.com/michimani/gotwi"
 )
